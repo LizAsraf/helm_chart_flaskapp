@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  {{ include "blog-app.fullname" . }}
+data:
+  MONGODB_URI: "mongodb://root:{{.Values.mongodb.auth.rootPassword}}@{{ .Release.Name }}-mongodb-headless:27017"
+  LOG_LEVEL: "{{ .Values.mongodb.LOG_LEVEL }}"
+  PERSISTENCE: "{{ .Values.mongodb.persistence.enabled }}" 
