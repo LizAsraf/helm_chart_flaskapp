@@ -7,7 +7,6 @@ replicaCount: 2
 
 image:
   repository: 644435390668.dkr.ecr.us-west-2.amazonaws.com/blogapp
-  # pullPolicy: IfNotPresent    
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.0.1"
 
@@ -44,48 +43,32 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: #{}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt
   hosts:
     - host: liz-crm-demo.duckdns.org
       paths:
         - path: /
           pathType: Prefix         
-  tls: #[]
+  tls:
    - secretName: liz-secret-and-certificate
      hosts:
        - liz-crm-demo.duckdns.org
 
-resources: #{}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+resources: 
   limits:
       cpu: 15m 
       memory: 100Mi
-  #   cpu: 100m
-  #   memory: 128Mi
   requests:
       cpu: 1m
       memory: 50Mi
-  #   cpu: 100m
-  #   memory: 128Mi
 
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
 
-# nodeSelector: {}
-
-# tolerations: []
-
-# affinity: {}
 
 
 mongodb:
@@ -97,7 +80,8 @@ mongodb:
   arbiter:
     enabled: false
   auth:
-    rootPassword: root123
+    username: "test"
+    password: "password"
   LOG_LEVEL: "info"
 
 
@@ -107,8 +91,8 @@ cleanupjob:
   restartPolicy: OnFailure #alway, never,etc
   backoffLimit: 1
 
-dns:
-  image: "ghcr.io/linuxserver/duckdns:latest"
-  requesteddomains: liz-crm-demo
-  token: fee9f356-ed7e-49cf-82f9-284ba2eb695c
-  dnsdomain: .duckdns.org
+# dns:
+#   image: "ghcr.io/linuxserver/duckdns:latest"
+#   requesteddomains: liz-crm-demo
+#   token: fee9f356-ed7e-49cf-82f9-284ba2eb695c
+#   dnsdomain: .duckdns.org

@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name:  {{ include "blog-app.fullname" . }}
 data:
-  MONGODB_URI: "mongodb://root:{{.Values.mongodb.auth.rootPassword}}@{{ .Release.Name }}-mongodb-headless:27017"
-  LOG_LEVEL: "{{ .Values.mongodb.LOG_LEVEL }}"
-  PERSISTENCE: "{{ .Values.mongodb.persistence.enabled }}" 
+  SECRET_KEY: "my-secret-key"
+  MONGODB_USER: {{.Values.mongodb.auth.username}}
+  MONGODB_PASSWORD: {{.Values.mongodb.auth.password}}
+  DATABASE_URL_APP: "{{ .Release.Name }}-mongodb-headless:27017"
+
