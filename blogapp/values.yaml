@@ -82,6 +82,8 @@ mongodb:
   auth:
     username: "test"
     password: "password"
+    database: "flask_db"
+
   LOG_LEVEL: "info"
 
 
