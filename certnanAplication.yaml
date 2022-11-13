@@ -3,12 +3,14 @@ kind: Application
 metadata:
   name: cert-manager
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
+annotations:
+  argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
   source:
     repoURL: https://charts.jetstack.io
-    chart: cert-manager  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
+    chart: cert-manager # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
     targetRevision: v1.10.0
     helm:
       releaseName: cert-manager

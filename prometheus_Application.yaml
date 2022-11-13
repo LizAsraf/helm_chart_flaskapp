@@ -4,6 +4,8 @@ metadata:
   name: prometheus-grafana
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+annotations:
+  argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
@@ -18,5 +20,10 @@ spec:
     automated:
       prune: true
       allowEmpty: true
-  
+  spec:
+    source:
+      helm:
+        valueFiles:
+        - prometheus_values.yaml
+        - https://gitlab.com/liz.asraf/argo-cd  
       

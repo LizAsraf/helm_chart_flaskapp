@@ -4,6 +4,8 @@ metadata:
   name: logging
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+annotations:
+  argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
@@ -18,3 +20,9 @@ spec:
     automated:
       prune: true
       allowEmpty: true
+  spec:
+    source:
+      helm:
+        valueFiles:
+        - fluentd-values.yaml
+        - https://gitlab.com/liz.asraf/argo-cd
