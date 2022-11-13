@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: logging
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.cryptexlabs.com
+    targetRevision: 7.17.3
+    chart: efk  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
