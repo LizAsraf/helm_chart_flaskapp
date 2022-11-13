@@ -11,10 +11,10 @@ spec:
     targetRevision: 7.17.3
     chart: efk  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
     helm:
-      valueFiles:
-      - fluentd-values.yaml
-      - git@gitlab.com:liz.asraf/argo-cd.git
-
+      values: |
+        elasticsearch:
+          minimumMasterNodes: 1
+          replicas: 1 
   destination:
     server: https://kubernetes.default.svc
     namespace: default

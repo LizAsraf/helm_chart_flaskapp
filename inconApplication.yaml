@@ -11,10 +11,14 @@ spec:
     targetRevision: 4.3.0
     chart: ingress-nginx # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
     helm:
-      valueFiles:
-      - nginx-values.yaml
-      - git@gitlab.com:liz.asraf/argo-cd.git
-
+      values: |
+        controller:  
+          metrics:  
+            enabled: true   
+            serviceMonitor:
+                enabled: true
+                additionalLabels:
+                  release: prometheus           
   destination:
     server: https://kubernetes.default.svc
     namespace: default
