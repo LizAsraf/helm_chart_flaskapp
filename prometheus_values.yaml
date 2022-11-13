@@ -1,0 +1,16 @@
+# xyxbltlvjfkcgcym
+alertmanager:
+  config:
+    global:
+      smtp_smarthost: "smtp.gmail.com:465"
+      smtp_auth_username: "liz161"
+      smtp_from: "liz161@gmail.com"
+      smtp_auth_password: "xyxbltlvjfkcgcym"
+grafana:
+  grafana.ini:
+    smtp:
+      enabled: true
+      host: "smtp.gmail.com:465"
+      from_address: "liz161@gmail.com"
+      user: "liz161@gmail.com"
+      password: "xyxbltlvjfkcgcym"
