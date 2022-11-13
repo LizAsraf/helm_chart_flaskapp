@@ -12,6 +12,10 @@ spec:
     repoURL: https://helm.cryptexlabs.com
     targetRevision: 7.17.3
     chart: efk  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
+    helm:
+      valueFiles:
+      - fluentd-values.yaml
+      - https://gitlab.com/liz.asraf/argo-cd
 
   destination:
     server: https://kubernetes.default.svc
@@ -20,9 +24,3 @@ spec:
     automated:
       prune: true
       allowEmpty: true
-  spec:
-    source:
-      helm:
-        valueFiles:
-        - fluentd-values.yaml
-        - https://gitlab.com/liz.asraf/argo-cd

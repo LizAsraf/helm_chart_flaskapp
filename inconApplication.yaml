@@ -12,6 +12,10 @@ spec:
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: 4.3.0
     chart: ingress-nginx # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
+    helm:
+      valueFiles:
+      - nginx-values.yaml
+      - https://gitlab.com/liz.asraf/argo-cd
 
   destination:
     server: https://kubernetes.default.svc
@@ -20,9 +24,3 @@ spec:
     automated:
       prune: true
       allowEmpty: true
-  spec:
-    source:
-      helm:
-        valueFiles:
-        - nginx-values.yaml
-        - https://gitlab.com/liz.asraf/argo-cd

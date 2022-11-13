@@ -12,6 +12,10 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 41.7.4
     chart: kube-prometheus-stack  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
+    helm:
+      valueFiles:
+      - prometheus_values.yaml
+      - https://gitlab.com/liz.asraf/argo-cd  
 
   destination:
     server: https://kubernetes.default.svc
@@ -20,10 +24,4 @@ spec:
     automated:
       prune: true
       allowEmpty: true
-  spec:
-    source:
-      helm:
-        valueFiles:
-        - prometheus_values.yaml
-        - https://gitlab.com/liz.asraf/argo-cd  
       
