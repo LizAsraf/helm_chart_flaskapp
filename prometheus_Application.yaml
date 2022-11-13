@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
       - prometheus_values.yaml
-      - https://gitlab.com/liz.asraf/argo-cd  
+      - git@gitlab.com:liz.asraf/argo-cd.git  
 
   destination:
     server: https://kubernetes.default.svc
