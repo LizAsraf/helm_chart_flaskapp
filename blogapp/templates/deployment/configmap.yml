@@ -5,6 +5,6 @@ metadata:
 data:
   SECRET_KEY: "my-secret-key"
   DATABASE_HOST_APP: "{{ .Release.Name }}-mongodb-headless"
-  MONGODB_PORT: 27017
+  MONGODB_PORT: "27017"
   MONGODB_USER: root
   MONGODB_PASSWORD: {{ .Values.mongodb.auth.rootPassword }}
