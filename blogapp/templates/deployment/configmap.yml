@@ -4,7 +4,6 @@ metadata:
   name:  {{ include "blog-app.fullname" . }}
 data:
   SECRET_KEY: "my-secret-key"
-  MONGODB_USER: {{.Values.mongodb.auth.username}}
-  MONGODB_PASSWORD: {{.Values.mongodb.auth.password}}
+  MONGODB_PASSWORD: {{.Values.mongodb.auth.rootPassword}}
   DATABASE_URL_APP: "{{ .Release.Name }}-mongodb-headless:27017"
 
