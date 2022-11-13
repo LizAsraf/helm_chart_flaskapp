@@ -3,11 +3,11 @@ kind: Application
 metadata:
   name: blogapp
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: git@github.com:Liz161/argo-cd.git
+    repoURL: git@gitlab.com:liz.asraf/argo-cd.git
     targetRevision: HEAD
     path: blogapp
   destination:
@@ -17,8 +17,3 @@ spec:
     automated:
       prune: true
       allowEmpty: true
-
-
-
-
-
