@@ -25,10 +25,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -41,7 +43,7 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
@@ -49,19 +51,19 @@ ingress:
     - host: liz-crm-demo.duckdns.org
       paths:
         - path: /
-          pathType: Prefix         
+          pathType: Prefix
   tls:
-   - secretName: liz-secret-and-certificate
-     hosts:
-       - liz-crm-demo.duckdns.org
+    - secretName: liz-secret-and-certificate
+      hosts:
+        - liz-crm-demo.duckdns.org
 
-resources: 
+resources:
   limits:
-      cpu: 15m 
-      memory: 100Mi
+    cpu: 15m
+    memory: 100Mi
   requests:
-      cpu: 1m
-      memory: 50Mi
+    cpu: 1m
+    memory: 50Mi
 
 autoscaling:
   enabled: false
@@ -69,14 +71,12 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
 
-
-
 mongodb:
   architecture: "replicaset"
   replicaCount: 2
   persistence:
     enabled: true
-    storageClass: "standard"
+    storageClass: "gp2"
   arbiter:
     enabled: false
   auth:
@@ -85,14 +85,6 @@ mongodb:
     database: "flask_db"
 
   LOG_LEVEL: "info"
-
-
-cleanupjob:
-  schedule: "0 0 * * *"
-  successfulJobsHistoryLimit: 0
-  restartPolicy: OnFailure #alway, never,etc
-  backoffLimit: 1
-
 # dns:
 #   image: "ghcr.io/linuxserver/duckdns:latest"
 #   requesteddomains: liz-crm-demo
