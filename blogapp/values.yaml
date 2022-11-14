@@ -48,14 +48,14 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
   hosts:
-    - host: liz-crm-demo.duckdns.org
+    - host: blogapp-portfolio.duckdns.org
       paths:
         - path: /
           pathType: Prefix
   tls:
     - secretName: liz-secret-and-certificate
       hosts:
-        - liz-crm-demo.duckdns.org
+        - blogapp-portfolio.duckdns.org
 
 resources:
   limits:
