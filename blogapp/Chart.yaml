@@ -8,6 +8,6 @@ description: A Helm chart for blog-app with mongodb
 
 type: application
 
-version: 1.0.9
+version: 1.0.10
 
 appVersion: "1.16.0"
