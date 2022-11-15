@@ -14,3 +14,18 @@ grafana:
       from_address: "liz161@gmail.com"
       user: "liz161@gmail.com"
       password: "xyxbltlvjfkcgcym"
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    annotations:
+      # kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: grafana-liz.duckdns.org
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: grafana-general-tls
+      hosts:
+        - grafana-liz.duckdns.org
