@@ -84,6 +84,8 @@ mongodb:
     # password: "password"
     # database: "flask_db"
   LOG_LEVEL: "info"
+  metrics:
+    enabled: true
 # dns:
 #   image: "ghcr.io/linuxserver/duckdns:latest"
 #   requesteddomains: liz-crm-demo
