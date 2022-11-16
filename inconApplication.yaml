@@ -18,7 +18,7 @@ spec:
             serviceMonitor:
                 enabled: true
                 additionalLabels:
-                  release: prometheus           
+                  release: prometheus-grafana           
   destination:
     server: https://kubernetes.default.svc
     namespace: default
