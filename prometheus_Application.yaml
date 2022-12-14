@@ -10,17 +10,10 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 41.7.4
     chart: kube-prometheus-stack  # Set this when pulling directly from a Helm repo. DO NOT set for git-hosted Helm charts.
-    # helm:
-    #   parameters:
-    #   - name: "prometheusOperator.hostNetwork"
-    #     value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
   syncPolicy:
-    # syncOptions:
-    #   - ServerSideApply=true
-    #   - replace=true
     automated:
       prune: true
       allowEmpty: true
